@@ -1,6 +1,6 @@
 # MyCoursesNotifier
 
-This script helps you stay updated on the availability of new courses for enrollment at the Open University of Israel. It uses web scraping to monitor the course registration page for a specific course and notifies you when new study groups are available.
+This handy script keeps you informed about the latest course offerings at the Open University of Israel. Through web scraping, it monitors the course registration page for a particular course that you chose and alerts you as soon as new study groups become available.
 
 
 # Steps to use the **MyCoursesNotifier** script:
