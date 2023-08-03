@@ -2,18 +2,31 @@
 
 This script helps you stay updated on the availability of new courses for enrollment at the Open University of Israel. It uses web scraping to monitor the course registration page for a specific course and notifies you when new study groups are available.
 
-## Requirements
 
-- Python 3.x
-- Selenium: `pip install selenium`
-- winotify: `pip install winotify`
-- Chrome WebDriver: Download and install ChromeDriver from [here](https://sites.google.com/a/chromium.org/chromedriver/downloads). Make sure to place the `chromedriver.exe` file in the path specified in the `DRIVER_PATH` constant.
+# Steps to use the **MyCoursesNotifier** script:
 
-## How to Use
+1. Clone the Repository:
+   - Go to the GitHub repository page (e.g., https://github.com/username/MyCoursesNotifier).
+   - Click on the "Code" button and copy the repository URL (e.g., https://github.com/username/MyCoursesNotifier.git).
+   - Open a terminal or command prompt on your computer.
+   - Navigate to the directory where you want to clone the repository.
+   - Run the following command to clone the repository:
 
-1. Make sure you have all the requirements installed.
+     ```
+     git clone https://github.com/username/MyCoursesNotifier.git
+     ```
 
-2. Update the script with your course details:
+2. Install Dependencies:
+   - Make sure you have Python 3.x installed on your computer.
+   - Install the required dependencies using pip:
+
+     ```
+     pip install selenium winotify
+     ```
+
+3. Update Course Details:
+   - Open the `my_courses_notifier.py` file in a text editor.
+   - Replace the values of `COURSE_ID`, `YEAR`, `SEMESTER`, and `DRIVER_PATH` with your desired course details and WebDriver path.
 
    ```python
    COURSE_ID = "20554"     // Replace with your desired course ID
@@ -22,11 +35,19 @@ This script helps you stay updated on the availability of new courses for enroll
    DRIVER_PATH = "C:\Program Files\chromedriver.exe"   // Replace with the path to your Chrome WebDriver
    ```
 
-3. Run the script manually to ensure it's working as expected:
+5. Test the Script:
+   - Run the script manually to ensure it's working as expected:
 
-   ```
-   python my_courses_notifier.py
-   ```
+     ```
+     python my_courses_notifier.py
+     ```
+
+6. Automate with Windows Task Scheduler:
+   - Follow the instructions provided in the README to set up automation using Windows Task Scheduler.
+
+7. Customize and Use:
+   - The script will automatically notify you of new courses, and you can customize it further as per your requirements.
+
 
 ## Automation with Windows Task Scheduler
 
@@ -56,17 +77,27 @@ You can set up automation using Windows Task Scheduler to run the script at regu
 
 Now, the script will run automatically at the specified intervals, checking for new course offerings and notifying you when available.
 
+
 ## Functionality
 
 1. **Scrape Course IDs**: The script will open the Open University's course registration page for the specified semester and course. It will retrieve the course IDs and study group IDs available for enrollment.
 
 2. **Check and Notify New Courses**: The script will compare the newly scraped course IDs with the ones stored in the `course_identifiers.csv` file. If it finds any new course IDs, it will notify you about them using the Windows Notification Center. The script will also save the latest course IDs to the CSV file for future comparisons.
 
+
 ## Notifications
 
 - When new courses are available, you will receive a Windows notification with the list of new course IDs.
 - The notification will display the course ID, the study group ID, and additional information about the available courses.
 
-## Note
 
-- Make sure to run the script manually at least once to ensure it works as expected before scheduling it with Windows Task Scheduler.
+## Contributing
+
+I welcome contributions to **MyCoursesNotifier**! If you have ideas, bug fixes, or improvements, feel free to contribute. You can:
+
+- Report issues: Provide feedback or report any problems you encounter while using the script.
+- Submit pull requests: If you've made enhancements or bug fixes, i will be happy to review and merge them.
+- Improve documentation: Help make the README more informative and user-friendly.
+- Provide feedback: input is valuable, even if you don't have code contributions.
+
+Your contributions are appreciated and will help improve **MyCoursesNotifier** for the Open University community. Thank you for considering contributing!
