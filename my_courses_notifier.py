@@ -88,6 +88,8 @@ def notify_new_course(courses_ids):
     toast.set_audio(audio.Default, loop=False)
     toast.show()
 
+def justtest():
+    pass
 
 if __name__ == "__main__":
     courses_ids = scrape_course_ids()   # Scrape course IDs from the website
