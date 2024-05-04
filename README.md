@@ -1,103 +1,70 @@
-# MyCoursesNotifier
+# Course Notifier
 
-This handy script keeps you informed about the latest course offerings at the Open University of Israel. Through web scraping, it monitors the course registration page for a particular course that you chose and alerts you as soon as new study groups become available.
+## Overview
+The **Course Notifier** project aims to provide a convenient solution for students or individuals interested in specific study group of a courses in the open university of israel. Course Notifier make sure you stay updated on new course offerings. By leveraging web scraping techniques, the script automates the process of monitoring course listings on a open university website, detecting any additions or changes, and promptly notifying the user by a message.
 
+## Purpose
+1. **Automation of Course Monitoring**: Manually checking for new study group of courses or updates on a website can be time-consuming and inefficient. The Course Notifier automates this process, saving users valuable time and effort.
+  
+2. **Timely Notifications**: By scheduling periodic checks for new courses, the script ensures that users receive timely notifications as soon as new offerings become available, allowing them to take prompt action, such as registering for courses of interest.
 
-# Steps to use the **MyCoursesNotifier** script:
+3. **Customization and Flexibility**: The script provides flexibility by allowing users to specify the course ID, academic year, and semester of interest. This customization ensures that users receive notifications tailored to their specific preferences.
 
-1. Clone the Repository:
-   - Go to the GitHub repository page (e.g., https://github.com/username/MyCoursesNotifier).
-   - Click on the "Code" button and copy the repository URL (e.g., https://github.com/username/MyCoursesNotifier.git).
-   - Open a terminal or command prompt on your computer.
-   - Navigate to the directory where you want to clone the repository.
-   - Run the following command to clone the repository:
+## Key Components
 
-     ```
-     git clone https://github.com/username/MyCoursesNotifier.git
-     ```
+### Web Scraping (`scraper.py`)
+- Utilizes the Selenium library to scrape course IDs and study group elements from the target website.
+- Parses the webpage content to extract relevant information, such as course codes and study group details.
+- Handles exceptions and errors gracefully to maintain script robustness.
 
-2. Install Dependencies:
-   - Make sure you have Python 3.x installed on your computer.
-   - Install the required dependencies using pip:
+### Notification System (`notifier.py`)
+- Implements a notification system using the Pushover API to send notifications to users' devices.
+- Constructs informative messages detailing the newly available courses for user convenience.
+- Validates Pushover API tokens and user keys to ensure successful notification delivery.
 
-     ```
-     pip install selenium winotify
-     ```
+### Scheduled Execution (`main.py`)
+- Orchestrates the entire process by scheduling tasks using the `schedule` library.
+- Defines a job function to execute the scraping, checking, and notification processes.
+- Allows users to customize the scheduling interval and end date based on their preferences and requirements.
 
-3. Update Course Details:
-   - Open the `my_courses_notifier.py` file in a text editor.
-   - Replace the values of `COURSE_ID`, `YEAR`, `SEMESTER`, and `DRIVER_PATH` with your desired course details and WebDriver path.
+### Data Management (`course_identifiers.csv`)
+- Stores course IDs in a CSV file for comparison with newly scraped data.
+- Enables efficient detection of new courses by maintaining a record of previously identified course IDs.
 
-   ```python
-   COURSE_ID = "20554"     // Replace with your desired course ID
-   YEAR = "2024"           // Replace with the desired year (e.g., 2024)
-   SEMESTER = "A"          // Replace with the desired semester (A, B, or C)
-   DRIVER_PATH = "C:\Program Files\chromedriver.exe"   // Replace with the path to your Chrome WebDriver
-   ```
+### User Interaction (`info.file`)
+- Providing interactions with the user to receive the necessary information.
 
-5. Test the Script:
-   - Run the script manually to ensure it's working as expected:
+## Usage
+1. **Installation**: Users need to install Python 3.x and the required dependencies listed in `Requirements`.
+   
+2. **Configuration**: 
+    - Before running this script, make sure to set up the PUSHOVER_TOKEN and PUSHOVER_USER_KEY environment variables.
+        ```bash
+        export PUSHOVER_TOKEN="your_pushover_token"
+        export PUSHOVER_USER_KEY="your_pushover_user_key"
+        ```
+        Verify if they are set up correctly using the following commands:
+        ```bash
+        echo $PUSHOVER_TOKEN
+        echo $PUSHOVER_USER_KEY
+        ```
+    - Additionally, ensure that the Chrome WebDriver is installed and accessible.
 
-     ```
-     python my_courses_notifier.py
-     ```
+3. **Execution**: Run the script (`main.py`) to initiate the monitoring process.
+   
+4. **Customization**: Adjust scheduling parameters and input course-specific details as needed.
 
-6. Automate with Windows Task Scheduler:
-   - Follow the instructions provided in the README to set up automation using Windows Task Scheduler.
+5. **Notification**: Receive timely notifications about new courses via the configured notification service.
 
-7. Customize and Use:
-   - The script will automatically notify you of new courses, and you can customize it further as per your requirements.
-
-
-## Automation with Windows Task Scheduler
-
-You can set up automation using Windows Task Scheduler to run the script at regular intervals. Here's how to do it:
-
-1. Open "Task Scheduler" on your Windows machine.
-
-2. Click on "Create Basic Task" on the right-hand side.
-
-3. Give your task a name and description, then click "Next."
-
-4. Choose "Daily" if you want the script to run daily or choose "Weekly" for a specific day of the week. Click "Next."
-
-5. Set the start date and time for your task, and click "Next."
-
-6. Choose "Start a Program" and click "Next."
-
-7. Browse and select the Python executable (e.g., C:\Python39\python.exe) in the "Program/script" field.
-
-8. In the "Add arguments" field, enter the full path to the my_courses_notifier.py file (e.g., "C:\path\to\your\script\my_courses_notifier.py").
-
-9. In the "Start in" field, enter the directory path where the my_courses_notifier.py file is located (e.g., "C:\path\to\your\script").
-
-10. Click "Next" to review your settings.
-
-11. Click "Finish" to create the task.
-
-Now, the script will run automatically at the specified intervals, checking for new course offerings and notifying you when available.
+## Requirements
+- Python 3.x
+- Selenium
+- schedule
+- Chrome WebDriver
+- Pushover API tokens and user keys
 
 
-## Functionality
-
-1. **Scrape Course IDs**: The script will open the Open University's course registration page for the specified semester and course. It will retrieve the course IDs and study group IDs available for enrollment.
-
-2. **Check and Notify New Courses**: The script will compare the newly scraped course IDs with the ones stored in the `course_identifiers.csv` file. If it finds any new course IDs, it will notify you about them using the Windows Notification Center. The script will also save the latest course IDs to the CSV file for future comparisons.
+## Author
+Gal amrani
 
 
-## Notifications
-
-- When new courses are available, you will receive a Windows notification with the list of new course IDs.
-- The notification will display the course ID, the study group ID, and additional information about the available courses.
-
-
-## Contributing
-
-I welcome contributions to **MyCoursesNotifier**! If you have ideas, bug fixes, or improvements, feel free to contribute. You can:
-
-- Report issues: Provide feedback or report any problems you encounter while using the script.
-- Submit pull requests: If you've made enhancements or bug fixes, i will be happy to review and merge them.
-- Improve documentation: Help make the README more informative and user-friendly.
-- Provide feedback: input is valuable, even if you don't have code contributions.
-
-Your contributions are appreciated and will help improve **MyCoursesNotifier** for the Open University community. Thank you for considering contributing!
