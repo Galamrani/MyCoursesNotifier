@@ -22,7 +22,7 @@ The **Course Notifier** project aims to provide a convenient solution for studen
 - Constructs informative messages detailing the newly available courses for user convenience.
 - Validates Pushover API tokens and user keys to ensure successful notification delivery.
 
-### Scheduled Execution (`main.py`)
+### Scheduled Execution (`schdualer.py`)
 - Orchestrates the entire process by scheduling tasks using the `schedule` library.
 - Defines a job function to execute the scraping, checking, and notification processes.
 - Allows users to customize the scheduling interval and end date based on their preferences and requirements.
@@ -50,7 +50,7 @@ The **Course Notifier** project aims to provide a convenient solution for studen
         ```
     - Additionally, ensure that the Chrome WebDriver is installed and accessible.
 
-3. **Execution**: Run the script (`main.py`) to initiate the monitoring process.
+3. **Execution**: Run the script (`schdualer.py`) to initiate the monitoring process.
    
 4. **Customization**: Adjust scheduling parameters and input course-specific details as needed.
 
